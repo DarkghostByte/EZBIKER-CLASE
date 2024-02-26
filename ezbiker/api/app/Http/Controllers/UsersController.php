@@ -55,11 +55,11 @@ class UsersController extends Controller
             $user-> email= $request->email; 
             $user-> password= Hash::make($request->password);
             $user-> img = 'default.jpg';
-            $user->save();
+            //$user->save();
             $token = new Token();
             $token-> email = $request->email;
             $token-> token = rand(100000,999999);
-            $token->save();
+            $token->$token=$token;
 
             return response()->json([
                 'status'=>'success'
