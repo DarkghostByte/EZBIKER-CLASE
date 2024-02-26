@@ -57,15 +57,34 @@ class UsersController extends Controller
             $user-> password= Hash::make($request->password);
             $user-> img = 'default.jpg';
             //$user->save();
+            $token1 = rand(100000,999999);
             $token = new Token();
             $token-> email = $request->email;
-            $token-> token = rand(100000,999999);
-            $token->$token=$token;
+            $token->token=$token1;
+
+            //$token->save();
+            $this->sendEmail($token1,$request->name);
 
             return response()->json([
                 'status'=>'success'
             ]);
+
         }
+    }
+
+
+    public function sendEmail($token,$name)
+    {
+        $email="liadeochavez@gmail.com";
+        $data=[
+            'name'=>$name,
+            'token'=>$token,
+        ];
+        Mail::send('mails.register',$data,function ($message) use ($email){
+            $message->to($email,'EZBIKER')
+            ->subject('Gracias por registrarte');
+            $message->from('20cg0023@itsncg.edu.mx','EZBIKER');
+        });
     }
 
     /**

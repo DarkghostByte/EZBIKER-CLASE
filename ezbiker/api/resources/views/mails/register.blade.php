@@ -7,21 +7,23 @@
     <title>Document</title>
     <style>
         .container{
-            background-color: #EFEFEF; 
+            background-color: #202020; 
         }
         h1,h2,h3{
             text-align: center;
         }
         h3{
-
+            font-size: 2rem;
+            color:  #C94B0E;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Gracias por registrarte</h1>
+        <h1>Gracias por registrarte {{ $name }}</h1>
         <h2>Tu codigo de verificacion es:</h2>
-        <h3>123123</h3>
+        <h3>{{ $token }}</h3>
     </div>
 </body>
 </html>
