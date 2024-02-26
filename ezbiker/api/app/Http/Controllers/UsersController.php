@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Validator;
 use App\Models\Token;
+use Illuminate\Support\Facades\Mail;
 
 class UsersController extends Controller
 {
