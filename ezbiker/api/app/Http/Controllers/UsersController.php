@@ -56,13 +56,13 @@ class UsersController extends Controller
             $user-> email= $request->email; 
             $user-> password= Hash::make($request->password);
             $user-> img = 'default.jpg';
-            //$user->save();
+            $user->save();
             $token1 = rand(100000,999999);
             $token = new Token();
             $token-> email = $request->email;
             $token->token=$token1;
 
-            //$token->save();
+            $token->save();
             $this->sendEmail($token1,$request->name);
 
             return response()->json([
@@ -72,6 +72,43 @@ class UsersController extends Controller
         }
     }
 
+    public function verifyEmail(Request $request) {
+        $reglas = Validator::make($request->all(),[
+            'token' => 'required|min:6',
+            'email' => 'required|email|',
+        ]);
+        if( $reglas -> fails()){
+            return response()->json([
+                'status'=>'failed',
+                'message'=> 'Validation Error',
+                'error' => $reglas->errors()
+            ],201);
+        }else{
+            $token = Token::where('email','=',$request->email)
+                ->where('token',$request->token)
+                ->get()
+                ->first();
+                if($token == null){
+                    return response()
+                    ->json([
+                        'status'=>'failed',
+                        'message'=> "Invalid Token",
+                    ],201);
+                }else{
+                    $user = User::where("email",$request->email)
+                    ->get()
+                    ->first();
+                    $user->email_verified_at = date('Y-m-d h:m:s');
+                    $user->save();
+                    return response()
+                    ->json([
+                        'status'=>'succes',
+                        'message'=> "Email Verified",
+                    ],200);
+
+                }
+        }
+    }
 
     public function sendEmail($token,$name)
     {
