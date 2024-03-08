@@ -2,12 +2,18 @@
     <div>
         <div class="flex justify-center items-center h-screen bg-gray-900">
             <div class="w-1/3">
-                <h1 class="text-center text-4xl py-4 text-yellow-700">SignIn EzBiker</h1>
+                <div class="flex">
+                    <img v-bind:src="url+'img/logo.jpeg'" class="w-50 h-20 animate-bounce">
+                    <h1 class="text-center text-4xl py-4 text-yellow-700">SignIn EzBiker</h1>
+
+                </div>
+                
                 <el-form 
                 :label-position="'top'" 
                 style="max-width: 100%;"
                 :model="form1"
                 :rules="rules"
+                ref="formRef"
                 > 
 
                 <el-form-item label="Nombre" prop="name">
@@ -40,7 +46,7 @@
                 </el-form-item>
 
                 <el-form-item>
-                    <el-button type="primary" @click="onSubmit">Iniciar</el-button>
+                    <el-button type="success" @click="submitForm(formRef)">Iniciar</el-button>
                 </el-form-item>
 
                 </el-form>
@@ -135,11 +141,29 @@
 </template>
 
 <script>
+import { ElNotification } from "element-plus";
 import { reactive } from "vue"
     export default{
+        methods: {
+                    submitForm(){
+                        this.$refs.formRef.validate((valid,fields)=>{
+                            if(valid){
+                                console.log(fields);
+                            }else{
+                                ElNotification({
+                                    title:'ERROR',
+                                    message:'Favor de llenar los campos',
+                                    type:'error'
+                                })
+                            }
+                        })
+                    }
+                },
         name:'RegisterComponent',
         data:()=>({
             dialogVisible: false,
+            formRef: undefined,
+            url:process.env.VUE_APP_ROOT_ASSETS,
                 form1:reactive({
                     name:"Jesus Chavez",
                     email:"jtest@gmail.com",
