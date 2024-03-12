@@ -16,10 +16,10 @@
               <span class="sr-only">Pedidos</span>
               <span class="material-symbols-outlined">shopping_cart</span>
             </a>
-            <a href="#" class="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
+            <router-link to="/admin/products" class="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
               <span class="sr-only">Productos</span>
               <span class="material-symbols-outlined">list</span>
-            </a>
+            </router-link>
             <a href="#" class="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
               <span class="sr-only">users</span>
               <span class="material-symbols-outlined">group</span>

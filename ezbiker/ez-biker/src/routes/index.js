@@ -5,6 +5,8 @@ import VerifyComponent  from '@/views/auth/VerifyComponent.vue'
 const adminRoutes = [
     {path: 'home', component: () => import('@/views/admin/home/AdminHomeComponent.vue')},
     {path: 'users', component: () => import('@/views/admin/users/AdminUsersComponent.vue')},
+    {path: 'products', component: () => import('@/views/admin/products/AdminProductsComponent.vue')},
+
 ]
 
 const routes=[
