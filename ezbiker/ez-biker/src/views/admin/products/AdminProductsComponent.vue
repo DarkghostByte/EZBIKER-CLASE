@@ -5,9 +5,9 @@
               <h1 class="text-4xl font-semibold mb-2">Productos</h1>
             </div>
             <div class="flex flex-wrap items-start justify-end -mb-3">
-                <button class="inline-flex px-5 py-3 text-white bg-purple-600 hover:bg-purple-700 focus:bg-purple-700 rounded-md ml-6 mb-3">
+                <router-link to="/admin/products/add" class="inline-flex px-5 py-3 text-white bg-purple-600 hover:bg-purple-700 focus:bg-purple-700 rounded-md ml-6 mb-3">
                     Add Product
-                  </button>
+                  </router-link>
             </div>
         </div>
         <!-- TABLE DATA -->
@@ -18,7 +18,11 @@
                 style="width: 100%"
             >
                 <el-table-column prop="id" label="Id" sortable width="180"  />
-                <el-table-column prop="img" label="Imagen"  />
+                <el-table-column width="50px">
+                    <template #default="scope">
+                        <img v-bind:src="url+'products/'+scope.row.img" class="w-10">
+                    </template>
+                </el-table-column>
                 <el-table-column prop="name" label="Nombre"  sortable />
                 <el-table-column prop="price" label="Precio" sortable  />
                 <el-table-column prop="id_category" label="Categoria" sortable  />
@@ -47,6 +51,7 @@
           
           data:()=>({
                 tableData:[],
+                url:process.env.VUE_APP_ROOT_ASSETS,
           }),
           mounted(){
             this.tableData = []
