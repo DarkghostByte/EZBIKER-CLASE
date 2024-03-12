@@ -141,24 +141,49 @@
 </template>
 
 <script>
+import axios from  'axios';
 import { ElNotification } from "element-plus";
 import { reactive } from "vue"
     export default{
         methods: {
                     submitForm(){
+                        console.log(this.form1)
                         this.$refs.formRef.validate((valid,fields)=>{
                             if(valid){
-                                console.log(fields);
-                            }else{
-                                ElNotification({
-                                    title:'ERROR',
-                                    message:'Favor de llenar los campos',
-                                    type:'error'
-                                })
-                            }
+                                console.log(fields)
+                                axios.post(process.env.VUE_APP_ROOT_API+'users',this.form1).then(response=>{
+                                    console.log(response)
+                                    if(response.data.status == 'success'){
+                                        ElNotification({
+                                            title:"Exito",
+                                            message:'Usuario creado',
+                                            type: 'success'
+                                        })
+                                    }else{
+                                        ElNotification({
+                                            title:'Error',
+                                            message: 'Ha ocurrido un error',
+                                            type: 'error'
+                                        })
+                                    }
+                                }).catch(error=>{
+                            console.log(error)
+                            ElNotification({
+                                title: 'Error',
+                                message: 'Ha ocurrido un error',
+                                type:  'error'
+                            })
+                        })
+                    }else{
+                        ElNotification({
+                            title:'ERROR',
+                            message:'Favor de llenar los campos',
+                            type:'error'
                         })
                     }
-                },
+                })
+            }
+        },
         name:'RegisterComponent',
         data:()=>({
             dialogVisible: false,
