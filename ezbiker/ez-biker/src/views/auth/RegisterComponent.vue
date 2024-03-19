@@ -1,8 +1,13 @@
 <template>
     <div>
-        <div class="flex justify-center items-center h-screen bg-gray-900">
-            <div class="w-1/3">
-                <div class="flex">
+        <div class="flex justify-center items-center h-screen" style="background-color: #0f0f0f;">
+            
+            
+            <div class="w-1/3" >
+                
+                <div class="flex" >
+                    
+                    
                     <img v-bind:src="url+'img/logo.jpeg'" class="w-50 h-20 animate-bounce">
                     <h1 class="text-center text-4xl py-4 text-yellow-700">SignIn EzBiker</h1>
 

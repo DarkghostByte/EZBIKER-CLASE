@@ -9,5 +9,7 @@ Route::get('/users', [UsersController::class,'index']);
 Route::post('/users', [UsersController::class,'store']);
 
 Route::post('/users/actions/verify', [UsersController::class,'verifyEmail']);
+
 Route::resource('products', ProductsController::class);
+Route::post('/products/add/upload', [ProductsController::class,'upload']);
 

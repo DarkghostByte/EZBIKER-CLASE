@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Validator;
 
 class ProductsController extends Controller
 {
@@ -32,7 +33,33 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $reglas = Validator::make($request->all(),[
+            'name' => 'required|min:3',
+            'price' => 'required|numeric',
+            'id_category' => 'required',
+            'img' => 'required',
+            'description' => 'required|min:3',
+        ]);
+        if( $reglas -> fails()){
+            return response()->json([
+                'status'=>'failed',
+                'message'=> 'Validation Error',
+                'error' => $reglas->errors()
+            ],201);
+        }else{
+            $data = new Product();
+            $data->name = $request->name;
+            $data->price = $request->price;
+            $data->img = $request->img;
+            $data->id_category= $request->id_category;
+            $data->description=$request->description;
+            $data->save();
+
+            return response()->json([
+                'status'=>'success'
+            ]);
+        }
     }
 
     public function sendEmail($token,$name)
@@ -45,7 +72,7 @@ class ProductsController extends Controller
      */
     public function show(string $id)
     {
-        //
+
     }
 
     /**
@@ -70,5 +97,17 @@ class ProductsController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function upload(Request $request){
+        if ($request->hasFile('file')){
+            $file  = $request->file('file');
+            $filename = time().'.'.$file->getClientOriginalExtension();
+            $file->move(public_path('products/'),$filename);
+
+            return response()->json(['filename' =>  $filename]);
+        }
+        return response()->json(['error' => 'No se propocionó ningun archivo'],
+        400);
     }
 }

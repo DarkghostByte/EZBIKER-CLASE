@@ -5,7 +5,7 @@
               <h1 class="text-4xl font-semibold mb-2">Productos</h1>
             </div>
             <div class="flex flex-wrap items-start justify-end -mb-3">
-                <router-link to="/admin/products/add" class="inline-flex px-5 py-3 text-white bg-purple-600 hover:bg-purple-700 focus:bg-purple-700 rounded-md ml-6 mb-3">
+                <router-link to="/admin/add" class="inline-flex px-5 py-3 text-white bg-purple-600 hover:bg-purple-700 focus:bg-purple-700 rounded-md ml-6 mb-3">
                     Add Product
                   </router-link>
             </div>
@@ -45,7 +45,7 @@
   </template>
   
   <script>
-      import axios from  'axios'
+      import axios from 'axios';
       export default {
           name:'AdminProductsComponent',
           

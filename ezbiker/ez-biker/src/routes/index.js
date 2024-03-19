@@ -6,6 +6,8 @@ const adminRoutes = [
     {path: 'home', component: () => import('@/views/admin/home/AdminHomeComponent.vue')},
     {path: 'users', component: () => import('@/views/admin/users/AdminUsersComponent.vue')},
     {path: 'products', component: () => import('@/views/admin/products/AdminProductsComponent.vue')},
+    {path: 'add', component: () => import('@/views/admin/products/AdminProductsAddComponent.vue')},
+
 
 ]
 
