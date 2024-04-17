@@ -1,5 +1,81 @@
 <template>
     <div>
+
+        <div class="flex justify-center items-center h-screen bg-gray-200">
+            <div class="w-1/2">
+                <div class="flex h-screen justify-center items-center rounded-l-3xl" style="background-color: rgb(33 33 33);">
+                    <img v-bind:src="url+'img/logo.jpeg'" 
+                    class="" 
+                    style="width: 70%; height: 25%; ">              
+                </div>   
+            </div>
+            <div class="flex h-screen justify-center items-center rounded-r-3xl" style="background-color: rgb(25 25 25); width: 30%; ">
+                
+                <el-form 
+                :label-position="'top'" 
+                style="max-width: 100%; "
+                :model="form1"
+                :rules="rules"
+                ref="formRef"
+                
+                
+                > 
+
+                <div class="flex justify-center text-gray-200 font-mono">
+                    <h1 style="font-size: 60px; ">Welcome</h1>
+                </div>
+                <div class="flex justify-center items-center text-gray-200 font-mono">
+                    <h2 style="font-size: 15px; ">Singin in to your account to continue</h2>
+                </div>
+
+                <br>
+
+                <el-form-item label="Name" prop="name">
+                    <el-input v-model="form1.name" 
+                    placeholder="Insenta tu nombre"
+                    />
+                </el-form-item>
+    
+                <el-form-item label="Email" prop="email" >
+                    <el-input v-model="form1.email" 
+                    type="Email"
+                    placeholder="Insenta tu correo"
+                    />
+                </el-form-item>
+    
+                <el-form-item label="Password" prop="password" >
+                    <el-input v-model="form1.password" 
+                    type="password"
+                    placeholder="Insenta tu contraseña"
+                    show-password
+                    />
+                </el-form-item>
+                
+                <el-form-item>
+                    <el-form-group v-model="form1.licence">
+                        <el-checkbox value="true" name="licence">
+                            <label @click="dialogVisible = true">Aceptar terminos y condiciones</label>
+                        </el-checkbox>
+                    </el-form-group>
+                </el-form-item>
+
+                <div class="flex justify-center items-center">
+
+                    <el-form-item>
+                        <router-link to="/admin/home">
+                            <el-button type="info" @click="submitForm(formRef)" round>Iniciar</el-button>
+                        </router-link>
+                        
+                    </el-form-item>
+
+                </div>
+
+                
+
+                </el-form>
+            </div>
+        </div>
+<!--
         <div class="flex justify-center items-center h-screen" style="background-color: #0f0f0f;">
             
             
@@ -56,8 +132,14 @@
 
                 </el-form>
             </div>
+
+            <div class="w-full h-full bg-yellow-700">
+
+            </div>
             
         </div>
+-->
+        
 
         <!-- MODAL -->
 
@@ -149,6 +231,7 @@
 import axios from  'axios';
 import { ElNotification } from "element-plus";
 import { reactive } from "vue"
+
     export default{
         methods: {
                     submitForm(){

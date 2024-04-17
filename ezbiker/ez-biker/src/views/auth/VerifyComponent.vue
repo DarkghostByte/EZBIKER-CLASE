@@ -1,6 +1,7 @@
 <template>
     <div>
-        <div class="flex justify-center items-center h-screen bg-gray-900">
+        <!--
+      <div class="flex justify-center items-center h-screen bg-gray-900">
             <div class="w-1/3">
                 <div class="flex">
                     <img v-bind:src="url+'img/logo.jpeg'" class="w-50 h-20 animate-bounce">
@@ -45,6 +46,8 @@
             </div>
             
         </div>
+        -->
+  
 
     </div>
 </template>

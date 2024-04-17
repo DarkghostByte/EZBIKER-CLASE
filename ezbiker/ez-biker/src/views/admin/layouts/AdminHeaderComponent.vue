@@ -46,7 +46,11 @@
       </header>
 </template>
 <script>
+
     export default{
-        name:'AdminHeaderComponent'
+        name:'AdminHeaderComponent',
+        data:()=>({
+                url:process.env.VUE_APP_ROOT_ASSETS,
+          }),
     }
 </script>
