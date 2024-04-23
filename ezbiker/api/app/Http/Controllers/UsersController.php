@@ -63,12 +63,13 @@ class UsersController extends Controller
             $token->token=$token1;
 
             $token->save();
-            $this->sendEmail($token1,$request->name);
-
+            // Send verification email
+            $this->sendEmail($request->name, $token1);
+            // Send optional welcome email (consider including user data)
+            $this->sendWelcomeEmail($user); // Assuming a separate function
             return response()->json([
-                'status'=>'success'
+                'status' => 'success',
             ]);
-
         }
     }
 
@@ -110,6 +111,7 @@ class UsersController extends Controller
         }
     }
 
+
     public function sendEmail($token,$name)
     {
         $email="liadeochavez@gmail.com";
@@ -119,10 +121,26 @@ class UsersController extends Controller
         ];
         Mail::send('mails.register',$data,function ($message) use ($email){
             $message->to($email,'EZBIKER')
-            ->subject('Gracias por registrarte');
+            ->subject('¡¡¡Muchas gracias por registarte en EZBiker!!!');
+            $message->from('20cg0023@itsncg.edu.mx','EZBIKER');
+        });
+        
+    }
+
+    public function sendWelcomeEmail(User $user)
+    {
+        $email="liadeochavez@gmail.com";
+        $data=[
+            'name'=>$name,
+        ];
+        // ... content and configuration for welcome email
+        Mail::send('mails.login', ['user' => $user], function ($message) use ($user) {
+            $message->to($email,'EZBIKER')
+            ->subject('Welcome to EZBIKER!');
             $message->from('20cg0023@itsncg.edu.mx','EZBIKER');
         });
     }
+
 
     /**
      * Display the specified resource.

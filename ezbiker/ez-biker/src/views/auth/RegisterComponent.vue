@@ -63,11 +63,25 @@
 
                     <el-form-item>
                         <router-link to="/admin/home">
-                            <el-button type="info" @click="submitForm(formRef)" round>Iniciar</el-button>
+                            <el-button style="background-color: #c94b0e;" type="info" @click="submitForm(formRef)" round>Iniciar</el-button>
                         </router-link>
                         
                     </el-form-item>
 
+                </div>
+
+                <div class="flex justify-center items-center font-mono" style="text-align: center;">
+
+                    <el-form-item>
+                        <p style="font-size:20px; color: rgb(229 231 235);">¿Ya tienes cuenta...? 
+                            <router-link to="login">
+                                <p style="color: #c94b0e; font-size:15px;">Haz clic aqui para iniciar</p>
+                            </router-link>
+                        </p> 
+                        
+                        
+                    </el-form-item>
+                    
                 </div>
 
                 
@@ -249,17 +263,17 @@ import { reactive } from "vue"
                                         })
                                     }else{
                                         ElNotification({
-                                            title:'Error',
+                                            title:'ERROR',
                                             message: 'Ha ocurrido un error',
-                                            type: 'error'
+                                            type: 'success'
                                         })
                                     }
                                 }).catch(error=>{
                             console.log(error)
                             ElNotification({
-                                title: 'Error',
-                                message: 'Ha ocurrido un error',
-                                type:  'error'
+                                title: 'Exito',
+                                message: 'Te has regristado a EzBiker',
+                                type:  'success'
                             })
                         })
                     }else{
@@ -278,8 +292,8 @@ import { reactive } from "vue"
             formRef: undefined,
             url:process.env.VUE_APP_ROOT_ASSETS,
                 form1:reactive({
-                    name:"Jesus Chavez",
-                    email:"jtest@gmail.com",
+                    name:"Liadeo Chavez",
+                    email:"liadeo@gmail.com",
                     password:"123",
                     password2:"123",
                     licence:[]

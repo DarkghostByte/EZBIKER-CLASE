@@ -78,25 +78,25 @@ export default {
         { 
           id: 3, 
           title: 'SUZUKI', 
-          image: 'https://motosureste.com.mx/wp-content/uploads/2024/01/negrodorado.png', 
-          brand: 'HAYABUSA', 
-          price: '$459,490.00', 
-          description: 'Emociónate y encuentra un increíble poder con Hayabusa 2024. Una Suzuki que te ofrece la mejor tecnología y desempeño para tu camino. Obtén una experiencia superior de manejo y vive al máximo su poder incomparable. ' 
+          image: 'https://lh5.googleusercontent.com/proxy/GbK6u361g5DmiKlGTNK4xdwc17sJ6a7qk0UnpmpxkaoAmClT6EtQprR4zaLQhwlc5x5NOy1aYkbOYF5AN9WJg8J45j7jGVBSOPJ_fp5JnmsJo4pqqAi0w2tdGvU', 
+          brand: 'GSX-8S', 
+          price: '$214,990.00', 
+          description: 'DISEÑO FUTURISTA CON TECNOLOGÍA DE VANGUARDIA. Belleza funcional, estilo futurista y rendimiento optimizado. La nueva GSX-8S ofrece potencia, manejo y comodidad que responden fielmente a cada acción con un control total en cada uno de tus trayectos.' 
         },
 
         { id: 4, 
-          title: 'CF MOTO', 
-          image: 'https://static.wixstatic.com/media/a619e9_b0eb41e297ef46ceabc657ff88a0d2c1~mv2.png/v1/fill/w_974,h_567,al_c,q_90,enc_auto/a619e9_b0eb41e297ef46ceabc657ff88a0d2c1~mv2.png', 
-          brand: '450 SRS', 
-          price: '$144,800.00', 
+          title: 'DUCATI', 
+          image: 'https://ducatimonarquia.com/wp-content/uploads/2020/09/moto-linea-Steet-V4-gde.png', 
+          brand: 'STREETFIGHTER V4', 
+          price: '$463,000.00', 
           description: 'La 450SR S enciende cada centímetro de tu cuerpo con una oleada de adrenalina, a medida que el diseño aerodinámico evolutivo desata su potencia para esculpir ese segundo extra. Pisa el acelerador al máximo, juega con la velocidad, maniobra sin esfuerzo por las calles y pistas, conquistando cada curva en una postura de zambullida.' 
         },
       ],
       productImages: [
         'https://masktm.es/wp-content/uploads/2023/11/PHO_BIKE_90_RE_MY24-KTM-390-DUKE-BLUE-90-RIGHT_SALL_AEPI_V1.png',
         'https://i0.wp.com/www.dailymotos.com/wp-content/uploads/2017/10/18ZR1000H_40RGY1DRS1CG_A.png?fit=786%2C590&ssl=1',
-        'https://motosureste.com.mx/wp-content/uploads/2024/01/negrodorado.png',
-        'https://static.wixstatic.com/media/a619e9_b0eb41e297ef46ceabc657ff88a0d2c1~mv2.png/v1/fill/w_974,h_567,al_c,q_90,enc_auto/a619e9_b0eb41e297ef46ceabc657ff88a0d2c1~mv2.png'
+        'https://lh5.googleusercontent.com/proxy/GbK6u361g5DmiKlGTNK4xdwc17sJ6a7qk0UnpmpxkaoAmClT6EtQprR4zaLQhwlc5x5NOy1aYkbOYF5AN9WJg8J45j7jGVBSOPJ_fp5JnmsJo4pqqAi0w2tdGvU',
+        'https://ducatimonarquia.com/wp-content/uploads/2020/09/moto-linea-Steet-V4-gde.png'
       ]
     };
   },
@@ -114,7 +114,7 @@ export default {
           return '#43a537';
 
         case 2:
-          return '#dd6e00';
+          return '#002cbf';
 
           case 3:
           return '#fd090d';

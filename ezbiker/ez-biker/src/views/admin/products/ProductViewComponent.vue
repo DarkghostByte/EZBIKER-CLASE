@@ -23,12 +23,13 @@
             <img :src="productImages[1]" class="shoe" @click.prevent="changePosition(1)"/>
             <img :src="productImages[2]" class="shoe" @click.prevent="changePosition(2)"/>
             <img :src="productImages[3]" class="shoe" @click.prevent="changePosition(3)"/>
+            <img :src="productImages[4]" class="shoe" @click.prevent="changePosition(4)"/>
           </div>
         </div>
         <div class="products">
           <div class="products-wrap" :style="{ transform: `rotateY(${getRotation(currentPos)}deg)` }">
             <div v-for="product in products" :key="product.id" class="item">
-              <div class="title">{{ product.title }}</div>
+              <div class="title" :style="{ color: getColor(currentPos) }">{{ product.title }}</div>
               <div class="image">
                 <img :src="product.image" class="shoe" alt="">
               </div>
@@ -91,12 +92,20 @@ export default {
           price: '$144,800.00', 
           description: 'La 450SR S enciende cada centímetro de tu cuerpo con una oleada de adrenalina, a medida que el diseño aerodinámico evolutivo desata su potencia para esculpir ese segundo extra. Pisa el acelerador al máximo, juega con la velocidad, maniobra sin esfuerzo por las calles y pistas, conquistando cada curva en una postura de zambullida.' 
         },
+        { id: 5, 
+          title: 'YAMAHA', 
+          image: 'https://i.pinimg.com/originals/93/b5/1c/93b51c0c18b4a254acc0af94c7eb1a27.png', 
+          brand: 'YZF-R6', 
+          price: '$120,000.00', 
+          description: 'Ya desde sus inicios, la YZF-R1 se ha fabricado sin renunciar a nada, y es precisamente esta filosofía de diseño lo que convierte a esta Yamaha en la moto superdeportiva más emocionante de nuestro tiempo.' 
+        },
       ],
       productImages: [
         'https://mototres.mx/wp-content/uploads/2023/05/PHO_BIKE_90_RE_RC390-BLUE-MY22-90-Right-MY23-Studio_SALL_AEPI_V1-1.png',
         'https://storage.kawasaki.eu/public/kawasaki.eu/en-EU/model/19ZX1000Y_201GY3DRS1CG_A.png',
         'https://motosureste.com.mx/wp-content/uploads/2024/01/negrodorado.png',
-        'https://static.wixstatic.com/media/a619e9_b0eb41e297ef46ceabc657ff88a0d2c1~mv2.png/v1/fill/w_974,h_567,al_c,q_90,enc_auto/a619e9_b0eb41e297ef46ceabc657ff88a0d2c1~mv2.png'
+        'https://static.wixstatic.com/media/a619e9_b0eb41e297ef46ceabc657ff88a0d2c1~mv2.png/v1/fill/w_974,h_567,al_c,q_90,enc_auto/a619e9_b0eb41e297ef46ceabc657ff88a0d2c1~mv2.png',
+        'https://i.pinimg.com/originals/93/b5/1c/93b51c0c18b4a254acc0af94c7eb1a27.png'
       ]
     };
   },
@@ -114,17 +123,20 @@ export default {
           return '#43a537';
 
         case 2:
-          return '#dd6e00';
+          return '#002cbf';
 
           case 3:
-          return '#fd090d';
+          return '#009eb8';
+
+          case 4:
+          return '#040056';
 
         default:
           return '#333';
       }
     },
     getRotation(pos) {
-      return pos * -90;
+      return pos * -72;
     },
     addToCart(product) {
       console.log('Añadir producto al carrito:', product);
@@ -236,7 +248,7 @@ export default {
   transform: rotate(0deg);
 }
 
-.image { margin-left: 100px; height: 850px; width: 700px; margin-top: 85%;}
+.image { margin-left: 120px; height: 850px; width: 700px; margin-top: 85%;}
 
 .info { 
 	width: 250px; 
@@ -245,16 +257,17 @@ export default {
 
 .info p {
   margin-top: 10px;
+  margin-right: 20px;
 	text-align: left;
 	line-height: 1.5;
-	font-size: 12px; 
+	font-size: 11px; 
 	color: #444; 
 }
 
 .info button { 
 	margin-top: 25px; 
 	margin-bottom: 20px;
-	width: 100%;
+	width: 80%;
 }
 
 .info h2, .info h3 { margin: 5px 0; }
@@ -265,7 +278,7 @@ export default {
 .item .title {
 	position: absolute;
     top: 80px;
-    left: 100px;
+    left: 120px;
 	font-family: 'Cuprum', 'Roboto', Tahoma;
     font-size: 100px;  
     font-weight: 500;   
@@ -309,27 +322,33 @@ export default {
 	backface-visibility: hidden;
 }
 
-.products-wrap .item:nth-child(1) { transform: rotateY(0deg) translateZ(237px); display: flex;  }
-.products-wrap .item:nth-child(2) { transform: rotateY(90deg) translateZ(237px); display: flex; }
-.products-wrap .item:nth-child(3) { transform: rotateY(180deg) translateZ(237px); display: flex; }
-.products-wrap .item:nth-child(4) { transform: rotateY(270deg) translateZ(237px); display: flex; }
+.products-wrap .item:nth-child(1) { transform: rotateY(0deg) translateZ(310px); display: flex;  }
+.products-wrap .item:nth-child(2) { transform: rotateY(72deg) translateZ(310px); display: flex; }
+.products-wrap .item:nth-child(3) { transform: rotateY(144deg) translateZ(310px); display: flex; }
+.products-wrap .item:nth-child(4) { transform: rotateY(216deg) translateZ(310px); display: flex; }
+.products-wrap .item:nth-child(5) { transform: rotateY(288deg) translateZ(310px); display: flex; }
 
 .wrap[data-pos="0"] .products-wrap {
-  -webkit-transform: translateZ(-237px) rotateY(0deg);
-          transform: translateZ(-237px) rotateY(0deg);
+  -webkit-transform: translateZ(-310px) rotateY(0deg);
+          transform: translateZ(-310px) rotateY(0deg);
 }
 .wrap[data-pos="1"] .products-wrap {
-  -webkit-transform: translateZ(-237px) rotateY(-90deg);
-          transform: translateZ(-237px) rotateY(-90deg);
+  -webkit-transform: translateZ(-310px) rotateY(-72deg);
+          transform: translateZ(-310px) rotateY(-72deg);
 }
 .wrap[data-pos="2"] .products-wrap {
-  -webkit-transform: translateZ(-237px) rotateY(-180deg);
-          transform: translateZ(-237px) rotateY(-180deg);
+  -webkit-transform: translateZ(-310px) rotateY(-144deg);
+          transform: translateZ(-310px) rotateY(-144deg);
 }
 
 .wrap[data-pos="3"] .products-wrap {
-  -webkit-transform: translateZ(-237px) rotateY(-270deg);
-          transform: translateZ(-237px) rotateY(-270deg);
+  -webkit-transform: translateZ(-310px) rotateY(-216deg);
+          transform: translateZ(-310px) rotateY(-216deg);
+}
+
+.wrap[data-pos="4"] .products-wrap {
+  -webkit-transform: translateZ(-310px) rotateY(-288deg);
+          transform: translateZ(-310px) rotateY(-288deg);
 }
 
 
