@@ -21,7 +21,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Gracias por registrarte {{ $name }}</h1>
+        <h1>Gracias por registarte{{ $name }}</h1>
         <h2>Tu codigo de verificacion es:</h2>
         <h3>{{ $token }}</h3>
         <h4>Te damos la bienvenida a EZBIKER, esperamos que los articulos sean de tu agrado</h4>
